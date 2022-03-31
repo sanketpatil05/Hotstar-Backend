@@ -5,7 +5,8 @@ const kidController= require("./src/controllers/kid.controller")
 
 app.use(express.json())
 app.use("/kids", kidController)
-app.listen(1296,async()=>{
+
+app.listen(process.env.PORT || 1296,async()=>{
     try{
         await connect();
     }catch(err){
