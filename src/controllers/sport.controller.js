@@ -29,4 +29,15 @@ router.get("", async (req, res) => {
     }
   })
 
+  router.get("/:id", async (req, res) => {
+    try{
+        const sport = await Sport.findById(req.params.id).lean().exec();
+        console.log(sport)
+        return res.send(sport)
+    }
+    catch (er){
+      console.log(er.message)
+    }
+  })
+
   module.exports = router;

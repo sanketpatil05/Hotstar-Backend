@@ -14,5 +14,15 @@ router.get("", async (req, res) => {
       res.status(500).send(err.message);
     }
   })
+  router.get("/:id", async (req, res) => {
+    try{
+        const kid = await Kid.findById(req.params.id).lean().exec();
+        console.log(kid)
+        return res.send(kid)
+    }
+    catch (er){
+      console.log(er.message)
+    }
+  })
 
   module.exports = router;
